@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { omniauth_callbacks: "omniauth/omniauth_callbacks" }
+  root 'dashboard#index'
   get 'dashboard/index'
 
-  devise_for :users, :controllers => { omniauth_callbacks: "omniauth/omniauth_callbacks" }
   resources :posters
   get '/:user_name(.:id)' => "users#show", as: :user_profile
 
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
   get  "dropbox/auth_start"
   get  "dropbox/auth_finish"
 
-  root 'dashboard#index'
+  post '/NAS_login/:resource_name' => "dashboard#NAS_login", as: :NAS_login
 end
