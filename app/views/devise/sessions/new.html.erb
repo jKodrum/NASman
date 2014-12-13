@@ -11,8 +11,8 @@
   <%= f.submit "登入", class: "btn btn-lg btn-primary btn-block" %>
   <%= render "devise/shared/links" %>
   <%= f.label "或者" %>
-  <%= link_to "Facebook登入", user_omniauth_authorize_path(:facebook), class: "btn btn-info btn-block" %>
-  <%= link_to "Dropbox登入", user_omniauth_authorize_path(:dropbox), class: "btn btn-info btn-block" %>
+  <%= link_to image_tag("facebook_64.png"), user_omniauth_authorize_path(:facebook) %>
+  <%= link_to image_tag("dropbox_icon.png", size:"64"), user_omniauth_authorize_path(:dropbox) %>
 
   <%= flash_tag %>
 <% end %>
