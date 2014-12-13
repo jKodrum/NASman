@@ -8,8 +8,8 @@ class DashboardController < ApplicationController
       value: "GQYlRjwQlKEwKPEMALtJRRSn9LJUijxMWnsOykzu+ckK7-6QV-3FUmpRUAYQfQuf"
     }
     cookies[:target] = {
-      value: "butter"
-      :domain  => "google.com"
+      value: "cat",
+      :domain  => :all
     }
 
     require 'open-uri'
