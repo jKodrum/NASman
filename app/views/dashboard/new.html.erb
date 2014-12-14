@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form id="fileUploadForm" method="POST" action="http://10.10.220.233/adv,/cgi-bin/file_upload-cgic" enctype="multipart/form-data"
+class="form-signin">
+
+  <input type="hidden" name="rformat" value="extjs"/>
+
+  <input type="hidden" name="target_path" value="photo/">
+
+  <input type="file" name="file_path" value="/"/>
+
+<br>
+  <input type="submit" value="upload" class="btn btn-primary"/>
+  <%= link_to "Cancel", root_path, class: "btn btn-warning" %>
+</form>

@@ -19,4 +19,7 @@
 *.swp
 *.rdoc
 config/database.yml
+config/initializers/omniauth.rb
+python/*.jpg
 db/seeds.rb
+a
