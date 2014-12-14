@@ -1,7 +1,55 @@
-<h1>Dashboard#index</h1>
+<h1>Old Dashboard</h1>
 <p>
-<%= link_to "Public", "http://" << @ip << @cmd << @path %> | 
 <%= link_to "Login as Admin", "http://10.10.220.233/adv,/cgi-bin/weblogin.cgi?password=1234&username=admin" %>
 </p>
-<p> <%= @url %> </p>
-<p> <%= @body%> </p>
+<%= link_to "Admin", files_path("admin"), class: "btn btn-primary" %>
+<%= link_to "Music", files_path("music"), class: "btn btn-primary" %>
+<%= link_to "Photo", files_path("photo"), class: "btn btn-primary" %>
+<%= link_to "Public", files_path("public"), class: "btn btn-primary" %>
+<%= link_to "Video", files_path("video"), class: "btn btn-primary" %>
+<%= link_to "Upload", new_file_path, class: "btn btn-warning pull-right" %>
+<table class="table"> 
+  <thead> 
+    <tr> 
+      <td> # </td>
+      <td> file_name </td>
+      <td> path </td>
+      <td> file_type </td>
+      <td> size </td>
+      <td> shared </td>
+      <td> date_modified </td>
+    </tr>
+  </thead>
+ <tbody> 
+<% @hash["files"].each do |list| %>
+  <tr>
+    <% if list["_file_type"] == "folder" %>
+      <td><%=  image_tag "folder_icon.png", size:"40" %> </td>
+    <% else %>
+      <td><%=  image_tag "file_icon.png", size:"38" %> </td>
+    <% end %>
+    <td> <%= list["_file_name"] %> </td>
+    <td> <%= list["_path"] %> </td>
+    <td> <%= list["_file_type"] %> </td>
+    <td> <%= list["_file_size"] %> </td>
+    <td> <%= list["_shared"] %> </td>
+    <td> <%= list["_date_modified"] %> </td>
+    <td>
+    <% if list["_file_type"] != "folder" %>
+    <form id="fileBrowserDLForm" method="GET" action="http://10.10.220.233/adv,/cgi-bin/file_download.cgi">
+      <input type="hidden" name="shareName" value="public"/>
+      <input type="hidden" name="path" value=<%= list["_file_name"] %>/>
+      <input type="submit" value="Download"/>
+    </form>
+    </td>
+    <% end %>
+    <td> <%= link_to "Rename", rename_dashboard_index_path, class: "btn btn-info"%> </td>
+    http://10.10.220.233/cmd,/ck6fup6/fileBrowser_main/move_copy?action=cp&dst_path=%2FDokumenter&dst_sharename=public&src_files=%2Fstone.jpg&src_sharename=public
+    http://10.10.220.233/cmd,/ck6fup6/photo_main/search?keyword=st&limit=15&s_type=photo
+</tr>
+<% end %>
+ </tbody>
+</table>
+
+<p> <%# @url %> </p>
+<p> <%# @body %> </p>
